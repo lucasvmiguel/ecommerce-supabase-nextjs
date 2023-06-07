@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Auth
+
+Based on https://supabase.com/docs/guides/auth/auth-helpers/nextjs
+
+## Requirements
+
+- Supabase
+- Node & NPM
+
 ## Getting Started
 
 First, run the development server:
@@ -33,6 +42,42 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## How to use this project
+
+1. Install project
+
+```
+TODO: git clone github.com/lucasvmiguel/ecommerce-supabase-nextjs
+cd ecommerce-supabase-nextjs
+npm install
+```
+
+2. Create `.env.local` file in the root of the project
+
+3. Change variables of the `.env.local` file
+
+```
+NEXT_PUBLIC_SUPABASE_URL=<CHANGE>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<CHANGE>
+SUPABASE_URL=<CHANGE>
+SUPABASE_KEY=<CHANGE>
+```
+
+4. Run the project
+
+```
+npm run dev
+```
+
+## How to generate the types from Supabase to Typescripty
+
+```
+npx supabase login
+npx supabase gen types typescript --project-id <CHANGE> --schema public > utils/supabase-types.ts
+```
+
+Reference: https://supabase.com/docs/guides/api/rest/generating-types
+
 ## Roadmap
 
 - Product Page
@@ -47,14 +92,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     - brand: string
     - description: string
     - picture: Image[]
-    - estimated_shipping_price: float
-    - estimated_shipping_delivery_days_from: integer
-    - estimated_shipping_delivery_days_to: integer
-    - taxes (2.0)
-    - returnable (2.0)
-    - characteristics (2.0)
-    - reviews (2.0)
-    - recommendations based on products (2.0)
+    - created_at: datetime
+    - estimated_shipping_price: float (2.0)
+    - estimated_shipping_delivery_days_from: integer (2.0)
+    - estimated_shipping_delivery_days_to: integer (2.0)
+    - taxes (3.0)
+    - returnable (3.0)
+    - characteristics (3.0)
+    - reviews (3.0)
+    - recommendations based on products (3.0)
 
   - Create a web page to render a product
     - render fields
@@ -78,12 +124,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
   - Cart web page to render a cart
     - render products
     - show summary price
-    - show summary delivery days
     - remove products from cart
-    - add or remove quantity of products in cart
     - Go to checkout button
-    - show discounts (2.0)
-    - show if it's in stock (2.0)
+    - add or remove quantity of products in cart (2.0)
+    - show summary delivery days (2.0)
+    - show discounts (3.0)
+    - show if it's in stock (3.0)
 - Menu
   - TODO
 - Footer
